@@ -14,10 +14,10 @@ action :install_ubuntu do
 
   apt_repository 'osquery' do
     action        :add
-    uri           ::File.join(osquery_s3, os_codename)
+    uri           'https://pkg.osquery.io/deb'
     components    ['main']
     arch          'amd64'
-    distribution  os_codename
+    distribution  'deb'
     keyserver     'keyserver.ubuntu.com'
     key           repo_hashes[:ubuntu][:key]
     not_if { node['osquery']['repo']['internal'] }
